@@ -1,0 +1,23 @@
+body {
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    }
+.login-container {
+    transition: all 0.3s ease;
+    }
+.account-type {
+    transition: all 0.2s;
+    }
+.account-type:hover {
+    transform: translateY(-3px);
+    }
+.floating-input {
+    transition: all 0.3s;
+    }
+.floating-input:focus {
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+    }
