@@ -1,9 +1,12 @@
 <?php
 $req = $_SERVER['REQUEST_URI'];
 
-echo $req;
 switch ($req) {
 case '/':
-    echo "hello";
+    header('Content-Type: text/html');
+    readfile('index.html');
+    break;
+default:
+    return false;
 }
         
