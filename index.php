@@ -13,7 +13,14 @@
         <div class="bg-white rounded-xl shadow-2xl p-10">
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-800 mb-2">Login page</h1>
-                <p class="text-gray-600">Sign in to access your account</p>
+                <?php
+     $login_failed = 0;
+     if (!0) {
+         echo '<p class="text-gray-600">Sign in to access your account</p>';
+                   } else {
+         echo '<p class="text-red-600">Username or Password incorrect. try again.</p>';
+     }
+                ?>
             </div>
 
             <div class="flex justify-between mb-8 bg-gray-100 p-1 rounded-lg">
@@ -32,7 +39,7 @@
             </div>
 
 
-            <form action="login.php" method="POST" class="space-y-6">
+            <form action="/login.php" method="POST" class="space-y-6">
                 <div class="relative">
                     <input type="text" name="username" id="username" class="floating-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 peer" placeholder=" " />
                     <label for="username" class="floating-label absolute left-4 top-3 text-gray-500 pointer-events-none transition-all duration-200 peer-placeholder-shown:top-3 peer-focus:-top-2 peer-focus:text-blue-600 peer-focus:text-sm bg-white px-1 peer-placeholder-shown:text-base">Username</label>

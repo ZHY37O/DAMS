@@ -2,16 +2,25 @@
 require "connect.php";
 $uname = $_POST['username'];
 $pass  = $_POST['password'];
-echo $uname . "<br>";
-echo $pass . "<br>";
-
-$sql = "select username, sha256 from pass where username = '" . $uname . '\';';
+$sql = "select user_id, username, sha256, idtype from pass where username = '" . $uname . '\';';
 $r = $conn->query($sql)->fetchAll();
 if (!empty($r)) {
 foreach ($r as $row) {
     if ($row['sha256'] == hash("sha256",$pass)){
-        echo "loged in as ".$row['username'];
+        $type = $row['idtype'];
+        if ($type == 0) {
+            header('Location: /admin.php/?id='.$row['user_id']);
+            exit();
+        } elseif ($type == 1) {
+            header('Location: /patient.php/?id='.$row['user_id']);
+            exit();
+        } else {
+            header('Location: /doctor.php/?id='.$row['user_id']);
+            exit();
+        }
         return;
     }
 };
 }
+require 'index.php';
+exit();

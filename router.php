@@ -3,8 +3,7 @@ $req = $_SERVER['REQUEST_URI'];
 
 switch ($req) {
 case '/':
-    header('Content-Type: text/html');
-    readfile('index.html');
+    require 'index.php';
     break;
 default:
     return false;
