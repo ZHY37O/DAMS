@@ -22,5 +22,6 @@ foreach ($r as $row) {
     }
 };
 }
-require 'index.php';
+header('Location: /index.php/?attempted=1');
+# require 'index.php';
 exit();

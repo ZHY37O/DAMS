@@ -14,12 +14,11 @@
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-800 mb-2">Login page</h1>
                 <?php
-     $login_failed = 0;
-     if (!0) {
-         echo '<p class="text-gray-600">Sign in to access your account</p>';
-                   } else {
-         echo '<p class="text-red-600">Username or Password incorrect. try again.</p>';
-     }
+                if (!($_GET['attempted'] ?? 0)) {
+                    echo '<p class="text-gray-600">Sign in to access your account</p>';
+                } else {
+                    echo '<p class="text-red-600">Username or Password incorrect. try again.</p>';
+                }
                 ?>
             </div>
 
