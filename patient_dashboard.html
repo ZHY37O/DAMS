@@ -18,6 +18,12 @@
                 <a class="text-xl btn btn-ghost">Patient dashboard</a>
             </div>
             <div class="flex gap-2">
+                <div class="dropdown dropdown-end">
+                    <button class="px-4 py-2 text-blue-800 rounded-lg bg-gray-50 hover:bg-slate-800">
+                        <p name="appointment_form">Book Appointment</p>   <!-- can be change -->
+                    </button>
+                    
+                </div>
                 <input type="text" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
                 <div class="dropdown dropdown-end">
                     <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700">
@@ -36,13 +42,49 @@
             <p class="text-zinc-800">Welcome to your deshboard</p>
         </header>
 
-    <div>
-        <calendar-date class="border shadow-lg cally bg-base-100 border-base-300 rounded-box">
-            <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
-            <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
-            <calendar-month></calendar-month>
-        </calendar-date>       
-    </div>
+        <div class="p-6">
+            <div class="border shadow-sm card bg-base-100">
+                <div class="p-4 card-body">
+                <h2 class="text-lg font-semibold card-title">Medicine History</h2>
+                <p class="text-gray-500">No medicine history found.</p> <!-- update from data base -->
+                </div>
+            </div>
+        </div>
+
+
+        <section class="m-10 shadow-2xl bg-slate-200">
+            <h1 class="mb-10 text-2xl"> Previouse Appointments history</h1>
+            
+            <div class="overflow-x-auto bg-gray-400">
+                <table class="table w-full table-zebra">
+                <thead>
+                    <tr class="text-gray-700 bg-zinc-400">
+                        <th>ID</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2025-09-12</td>
+                    <td> 11:00:00</td>
+                    </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="flex justify-end m-10">
+            <calendar-date class="border shadow-lg cally bg-base-100 border-base-300 rounded-box">
+                <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
+                <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
+                <calendar-month></calendar-month>
+            </calendar-date>       
+        </div>
     </main>
 
 
