@@ -11,7 +11,7 @@
 <body class="flex items-center justify-center min-h-screen bg-gray-200">
     <div class="flex items-center justify-center w-full max-w-md p-10 bg-orange-200 shadow-2xl card form-container">
         <h2 class="mb-2 text-3xl font-bold text-center text-primary ">Create Account</h2>
-        <form id="registrationForm">
+        <form id="registrationForm" method="POST" action='/register_doctor.php'>
                 <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Full Name</span>
@@ -50,7 +50,7 @@
                     </label>
                     <input 
                         type="text"
-                        name="Full_name" 
+                        name="specialist" 
                         placeholder="Enter your special field" 
                         class="input input-bordered" 
                         required 
@@ -64,7 +64,7 @@
                     </label>
                     <input 
                         type="text"
-                        name="Full_name" 
+                        name="experience_year" 
                         placeholder="Enter your experience's year " 
                         class="input input-bordered" 
                         required 
@@ -78,7 +78,7 @@
                     </label>
                     <input 
                         type="text"
-                        name="Full_name" 
+                        name="license_id" 
                         placeholder="Enter your license Id " 
                         class="input input-bordered" 
                         required 
