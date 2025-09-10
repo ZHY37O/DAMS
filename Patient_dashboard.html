@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="https://unpkg.com/cally"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body>
+    <nav class="">
+        <div class="shadow-sm navbar bg-sky-500">
+            <div class="flex-1">
+                <a class="text-xl btn btn-ghost">Patient dashboard</a>
+            </div>
+            <div class="flex gap-2">
+                <input type="text" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
+                <div class="dropdown dropdown-end">
+                    <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <calendar-date class="border shadow-lg cally bg-base-100 border-base-300 rounded-box">
+        <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
+        <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
+        <calendar-month></calendar-month>
+    </calendar-date>
+
+    
+</body>
+</html>
