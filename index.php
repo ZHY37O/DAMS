@@ -6,7 +6,7 @@
     <title>Clinic management system</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
     <div class="login-container w-full max-w-md mx-4">
@@ -81,6 +81,6 @@
 
         </div>
 
-    <script src="style/style.js"></script>
+    <script src="/style/style.js"></script>
 </body>
 </html>
