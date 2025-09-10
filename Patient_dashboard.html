@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
-<body>
+<body class="bg-amber-200">
     <nav class="">
-        <div class="shadow-sm navbar bg-sky-500">
+        <div class="shadow-lg navbar bg-sky-500">
             <div class="flex-1">
                 <a class="text-xl btn btn-ghost">Patient dashboard</a>
             </div>
@@ -30,11 +30,24 @@
         </div>
     </nav>
 
-    <calendar-date class="border shadow-lg cally bg-base-100 border-base-300 rounded-box">
-        <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
-        <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
-        <calendar-month></calendar-month>
-    </calendar-date>
+    <main class="">
+        <header class="mb-8 rounded-lg bg-lime-500 h-[150px]">
+            <h1 class="text-3xl font-bold text-gray-800">Dashboard Overview</h1>
+            <p class="text-zinc-800">Welcome to your deshboard</p>
+        </header>
+
+    <div>
+        <calendar-date class="border shadow-lg cally bg-base-100 border-base-300 rounded-box">
+            <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
+            <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
+            <calendar-month></calendar-month>
+        </calendar-date>       
+    </div>
+    </main>
+
+
+
+
 
     
 </body>
