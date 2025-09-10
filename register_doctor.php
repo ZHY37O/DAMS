@@ -33,7 +33,7 @@ try {
     $conn->beginTransaction();
     $stmt1->execute([
         ':email'        => $email,
-        ':id_type' => 1,
+        ':id_type' => 2,
         ':address'      => $address,
         ':phone' => $phone_number,
         ':gender'       => $gender,
