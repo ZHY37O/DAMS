@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="https://unpkg.com/cally"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    
+
+    <div class="max-w-3xl p-6 mx-auto">
+        <div class="border shadow-md card bg-base-100">
+            <div class="card-body">
+            <h2 class="text-lg font-semibold card-title">Book Appointment</h2>
+
+            <form class="space-y-4">
+                    <!-- Doctor -->
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Doctor Name</span></label>
+                    <input type="text" placeholder="Select your doctor" class="w-full input input-bordered" />
+                </div>
+
+                    <!-- Patient Name -->
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Patient Name</span></label>
+                    <input type="text" placeholder="Enter patient name" class="w-full input input-bordered" />
+                </div>
+
+                    <!-- Patient Disease -->
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Patient Disease</span></label>
+                    <input type="text" placeholder="Enter disease/symptoms" class="w-full input input-bordered" />
+                </div>
+
+                    <!-- Date -->
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Date</span></label>
+                    <input type="date" class="w-full input input-bordered" />
+                </div>
+
+                    <!-- Time -->
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Time</span></label>
+                    <input type="time" class="w-full input input-bordered" />
+                </div>
+
+                    <!-- Notes -->
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Notes (Optional)</span></label>
+                    <textarea class="w-full textarea textarea-bordered" placeholder="Additional information"></textarea>
+                </div>
+
+                    <!-- Submit -->
+                <div class="mt-4 form-control">
+                    <button type="submit" class="w-full btn btn-primary">Book Appointment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
