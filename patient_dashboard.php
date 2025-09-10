@@ -19,24 +19,23 @@
             </div>
             <div class="flex gap-2">
                 <div class="dropdown dropdown-end">
-                    <button class="px-4 py-2 text-blue-800 rounded-lg bg-gray-50 hover:bg-slate-800">
-                        <p name="appointment_form">Book Appointment</p>   <!-- can be change -->
+     <button class="px-4 py-2 text-blue-800 rounded-lg bg-gray-50 hover:bg-slate-800" onclick="location.href = '/appointment_form.html/'">
+                        <p>Book Appointment</p>   <!-- can be change -->
                     </button>
                     
                 </div>
-                <form action="search.php" method="GET" class="flex items-center gap-2">
+                <form action="/search.php" method="GET" class="flex items-center gap-2">
                     <input type="text" name="query" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
                     <button type="submit" class="btn btn-ghost btn-circle">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>
                 <div class="dropdown dropdown-end">
-                    <button tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
+                    <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700" onclick="location.href = /logout.php/">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout
                     </button>
-                    <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+     <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                         <li>
                             <a class="justify-between">
                                 Profile

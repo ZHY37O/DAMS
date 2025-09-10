@@ -7,7 +7,7 @@ $search_results = [];
 
 if (!empty($query)) {
     try {
-        $sql = "SELECT d.specialization, d.years_of_experience, a.name AS doctor_name, a.email
+        $sql = "SELECT d.specialization, d.years_of_experience, a.username, a.name AS doctor_name, a.email
                 FROM doctor AS d
                 JOIN account AS a ON d.user_id = a.user_id
                 WHERE d.specialization LIKE ? OR a.name LIKE ?";
@@ -56,7 +56,7 @@ if (!empty($query)) {
                     </thead>
                     <tbody>
                         <?php foreach ($search_results as $doctor): ?>
-                        <tr>
+                        <tr onclick='location.href = "/doctor.php/?query=<?=$doctor['username']?>"'>
                             <td><?= htmlspecialchars($doctor['doctor_name']) ?></td>
                             <td><?= htmlspecialchars($doctor['specialization']) ?></td>
                             <td><?= htmlspecialchars($doctor['years_of_experience']) ?></td>

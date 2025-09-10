@@ -16,7 +16,13 @@
                 <a class="text-xl btn btn-ghost">Admin dashboard</a>
             </div>
             <div class="flex gap-2">
-                <input type="text" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
+                
+                <form action="/search.php" method="GET" class="flex items-center gap-2">
+                    <input type="text" name="query" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
+                    <button type="submit" class="btn btn-ghost btn-circle">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
                 <div class="dropdown dropdown-end">
                     <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700" onclick="location.href = /logout.php/">
                         <i class="fa-solid fa-right-from-bracket"></i>
