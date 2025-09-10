@@ -38,8 +38,14 @@
             <div class="bg-green-300 shadow-sm w-80 card">
 
                 <div class="card-body">
+                    <table>
+                    <tr><td>
                     <h2 class="card-title">Doctors</h2>
                     <p>6</p>   <!-- update by DATAbASE -->
+                    </td>
+                    <td>
+                    <button class = "button bg-green-600 item-end hover:bg-red-600 h-[20px] w-[40px]" onclick='location.href = "/doctor_registration.php/"'> <i class="fa-solid fa-user-plus"></i>  </button>
+                    </td></tr></table>
                     </div>
                 </div>
             </div>
