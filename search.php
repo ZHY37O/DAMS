@@ -19,6 +19,19 @@ if (!empty($query)) {
         echo "Error: " . $e->getMessage();
     }
 }
+
+// Determine which dashboard to link back to based on user type
+$back_link = '/patient_dashboard.php'; // Default to patient
+
+// Check the actual session values
+if (isset($_SESSION['idtype'])) {
+    if ($_SESSION['idtype'] == 3) { // Admin (from your auth.php)
+        $back_link = '/admin_dashboard.php';
+    } elseif ($_SESSION['idtype'] == 2) { // Doctor
+        $back_link = '/doctor_dashboard.php';
+    }
+    // Patient (idtype 1) will use the default
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +50,7 @@ if (!empty($query)) {
             <a class="text-xl btn btn-ghost">Search Results</a>
         </div>
         <div class="flex gap-2">
-            <a href="patient_dashboard.php" class="btn btn-ghost">Back to Dashboard</a>
+            <a href="<?= $back_link ?>" class="btn btn-ghost">Back to Dashboard</a>
         </div>
     </nav>
     <main class="max-w-6xl p-4 mx-auto">
