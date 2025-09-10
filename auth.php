@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "connect.php";
 $uname = $_POST['username'];
 $pass  = $_POST['password'];
@@ -8,20 +9,16 @@ if (!empty($r)) {
 foreach ($r as $row) {
     if ($row['sha256'] == hash("sha256",$pass)){
         $type = $row['idtype'];
-        if ($type == 0) {
-            header('Location: /admin.php/?id='.$row['user_id']);
-            exit();
-        } elseif ($type == 1) {
-            header('Location: /patient.php/?id='.$row['user_id']);
-            exit();
-        } else {
-            header('Location: /doctor.php/?id='.$row['user_id']);
-            exit();
-        }
+        $_SESSION['user_id'] = $row['user_id'];
+        $_SESSION['idtype'] = $row['idtype'];
+        $_SESSION['is_logged_in'] = 1;
+        header('Location: /index.php');
+        exit();
+        
         return;
     }
 };
 }
-header('Location: /index.php/?attempted=1');
+header('Location: /login_form.php/?attempted=1');
 # require 'index.php';
 exit();
