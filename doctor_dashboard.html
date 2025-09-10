@@ -32,14 +32,152 @@
             <h1 class="text-3xl font-bold text-gray-800">Doctor Dashboard</h1>
             <p class="text-zinc-800">Welcome to your deshboard</p>
         </header>
+        
+        <section>
+            <div class="p-6 bg-slate-300">
+                <h2 class="mb-4 text-xl font-semibold text-blue-700">Your Schedule</h2>
 
-    <div>
-        <calendar-date class="border shadow-lg cally bg-base-100 border-base-300 rounded-box">
-            <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
-            <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
-            <calendar-month></calendar-month>
-        </calendar-date>       
-    </div>
+                <div class="overflow-x-auto">
+                    <table class="table w-full">
+                    <thead>
+                        <tr class="text-gray-700 bg-gray-100">
+                        <th class="text-left">DAY</th>
+                        <th class="text-left">TIME SLOTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>Monday</td>
+                        <td class="text-black">No schedule</td>
+                        </tr>
+                        <tr>
+                        <td>Tuesday</td>
+                        <td class="text-black">No schedule</td>
+                        </tr>
+                        <tr>
+                        <td>Wednesday</td>
+                        <td class="text-black">No schedule</td>
+                        </tr>
+                        <tr>
+                        <td>Thursday</td>
+                        <td class="text-black">No schedule</td>
+                        </tr>
+                        <tr>
+                        <td>Friday</td>
+                        <td class="text-black">No schedule</td>
+                        </tr>
+                        <tr>
+                        <td>Saturday</td>
+                        <td class="text-black">No schedule</td>
+                        </tr>
+                        <tr>
+                        <td>Sunday</td>
+                        <td class="text-black">No schedule</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <!-- Add Working Hours -->
+                <div class="mt-6">
+                    <h3 class="mb-2 font-medium text-blue-700">Add Working Hours</h3>
+                    <div class="flex flex-wrap items-center gap-2">
+                    <!-- Day Selector -->
+                    <select class="w-32 select select-bordered">
+                        <option disabled selected>Day</option>
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                        <option>Sunday</option>
+                    </select>
+
+                    <!-- Time Inputs -->
+                    <input type="time" class="w-32 input input-bordered" />
+                    <input type="time" class="w-32 input input-bordered" />
+
+                    <!-- Max Appointments -->
+                    <input
+                        type="number"
+                        placeholder="Max Appointments"
+                        class="input input-bordered w-44"
+                    />
+
+                    <!-- Add Button -->
+                    <button class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <!-- Add Working Hours -->
+                <div class="mt-6">
+                    <h3 class="mb-2 font-medium text-blue-700">Remove Working Hours</h3>
+                    <div class="flex flex-wrap items-center gap-2">
+                    <!-- Day Selector -->
+                    <select class="w-32 select select-bordered">
+                        <option disabled selected>Day</option>
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                        <option>Sunday</option>
+                    </select>
+
+                    <!-- Time Inputs -->
+                    <input type="time" class="w-32 input input-bordered" />
+                    <input type="time" class="w-32 input input-bordered" />
+
+
+                    <!-- Add Button -->
+                    <button class="btn btn-primary">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex items-center justify-between m-5 ">
+            <div class="p-6 m-8 bg-teal-50">
+                <h2 class="mb-4 text-xl font-semibold">Appointments</h2>
+
+                <div class="overflow-x-auto">
+                    <table class="table w-full table-zebra">
+                    <!-- Table Head -->
+                        <thead>
+                            <tr class="text-gray-700 bg-gray-100">
+                            <th>Appointment ID</th>
+                            <th>Serial</th>
+                            <th>Patient Name</th>
+                            <th>Patient Disease</th>
+                            </tr>
+                        </thead>
+
+                        <!-- Table Body -->
+                        <tbody>
+                            <tr>
+                            <td>101</td>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>Fever & Cough</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <calendar-date class="border shadow-lg cally bg-base-100 border-base-300 rounded-box">
+                    <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
+                    <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
+                    <calendar-month></calendar-month>
+                </calendar-date> 
+            </div>
+      
+        </section>
     </main>
 
 
