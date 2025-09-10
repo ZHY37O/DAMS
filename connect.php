@@ -4,7 +4,7 @@ $username = "root";
 $password = ''; // todo: fetch from environment
 
 $port = 4056;
-$dbname = 'dams';
+$dbname = 'db001';
   try {
       //$conn = mysqli_connect("$servername:$port", $username, $password, $dbname);
       
