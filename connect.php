@@ -3,7 +3,7 @@ $servername = "";
 $username = "root";
 $password = ''; // todo: fetch from environment
 
-$port = 4056;
+$port = 3306;
 $dbname = 'db001';
   try {
       //$conn = mysqli_connect("$servername:$port", $username, $password, $dbname);
