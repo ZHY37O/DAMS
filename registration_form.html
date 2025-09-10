@@ -17,7 +17,8 @@
                         <span class="label-text">Full Name</span>
                     </label>
                     <input 
-                        type="text" 
+                        type="text"
+                        name="Full_name" 
                         placeholder="Enter your full name" 
                         class="input input-bordered" 
                         required 
@@ -28,14 +29,14 @@
                     <label class="label">
                         <span class="label-text">Date of birth</span>
                     </label>
-                    <input type="date" class="input" />
+                    <input type="date" class="input" name="Date_Of_birth" />
                 </div>
                 
                 <div class="form-control mb-4">
                     <label class="label">
                         <span class="label-text">Gender</span>
                     </label>
-                    <select class="select">
+                    <select class="select" name="Gender">
                         <option disabled selected>Your Gender</option>
                         <option>Male</option>
                         <option>Female</option>
@@ -48,7 +49,7 @@
                     <label class="label">
                         <span class="label-text">Blood Group</span>
                     </label>
-                    <select class="select">
+                    <select class="select" name="blood_Group">
                         <option disabled selected>Your blood group</option>
                         <option>A+ ve</option>
                         <option>A- ve</option>
@@ -70,6 +71,7 @@
                     </label>
                     <input 
                         type="text" 
+                        name="Address"
                         placeholder="Enter your Address" 
                         class="input input-bordered" 
                         required 
@@ -99,15 +101,16 @@
                         <input
                             type="tel"
                             class="tabular-nums"
+                            name="Phone_number"
                             required
                             placeholder="Phone"
                             pattern="[0-9]*"
-                            minlength="10"
-                            maxlength="10"
-                            title="Must be 10 digits"
+                            minlength="11"
+                            maxlength="11"
+                            title="Must be 11 digits"
                         />
                     </label>
-                    <p class="validator-hint">Must be 10 digits</p>
+                    <p class="validator-hint">Must be 11 digits</p>
                     </label>
                 </div>
                 <div class="form-control mb-4">
@@ -116,6 +119,7 @@
                     </label>
                     <input 
                         type="text" 
+                        name="user_name"
                         placeholder="username" 
                         class="input input-bordered" 
                         required 
@@ -138,7 +142,7 @@
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                             </g>
                         </svg>
-                        <input type="email" placeholder="mail@site.com" required />
+                        <input type="email" placeholder="mail@site.com" required name="email" />
                     </label>
                     <div class="validator-hint hidden">Enter valid email address</div>
 
@@ -168,6 +172,7 @@
                         <input
                             type="password"
                             required
+                            name="password"
                             placeholder="Password"
                             minlength="8"
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
