@@ -6,13 +6,13 @@ if (!($_SESSION['is_logged_in'] ?? 0)) {
 } else {
     switch ($_SESSION['idtype']) {
         case 0:
-            header('Location: /admin.php/');
+            header('Location: /admin_dashboard.html/');
             exit();
         case 1:
-            header('Location: /patient.php/');
+            header('Location: /patient_dashboard.php/');
             exit();
         case 2:
-            header('Location: /doctor.php/');
+            header('Location: /doctor_dashboard.html/');
             exit();
     }
 }
