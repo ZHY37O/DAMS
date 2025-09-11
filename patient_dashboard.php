@@ -1,6 +1,45 @@
 <?php
 session_start();
 require 'connect.php';
+
+// Handle account deletion logic
+if (isset($_GET['delete_account']) && $_GET['delete_account'] == 'confirm') {
+    try {
+        $userId = $_SESSION['user_id'];
+        
+        // Start a transaction
+        $conn->beginTransaction();
+        
+        // 1. Delete appointments associated with the user
+        $sqlAppointments = "DELETE FROM appointments WHERE patient_id = :userId";
+        $stmtAppointments = $conn->prepare($sqlAppointments);
+        $stmtAppointments->execute([':userId' => $userId]);
+        
+        // 2. Delete the patient record first due to foreign key constraint
+        $sqlPatient = "DELETE FROM patient WHERE user_id = :userId";
+        $stmtPatient = $conn->prepare($sqlPatient);
+        $stmtPatient->execute([':userId' => $userId]);
+
+        // 3. Delete the user's account
+        $sqlAccount = "DELETE FROM account WHERE user_id = :userId";
+        $stmtAccount = $conn->prepare($sqlAccount);
+        $stmtAccount->execute([':userId' => $userId]);
+        
+        // Commit the transaction
+        $conn->commit();
+        
+        // Destroy the session and redirect to the login page
+        session_destroy();
+        session_unset();
+        header("Location: /login_form.php");
+        exit();
+
+    } catch (PDOException $e) {
+        $conn->rollBack();
+        echo "Error deleting account: " . $e->getMessage();
+    }
+}
+
 try {
     $sql = "select a.name, p.week, p.time from appointments p, account a where p.doctor_id = a.user_id and p.patient_id = :patient_id";
     $stmt = $conn->prepare($sql);
@@ -44,7 +83,6 @@ $weekdays = [
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +110,7 @@ $weekdays = [
                     </button>
                 </form>
                 <div class="dropdown dropdown-end">
-                    <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700" onclick="location.href = /logout.php/">
+                    <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700" onclick="location.href = '/logout.php/'">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         Logout
                     </button>
@@ -93,7 +131,7 @@ $weekdays = [
     <main class="max-w-6xl p-4 mx-auto">
         <section class="mt-10">
             <h1 class="mb-10 text-2xl"> Appointments </h1>
-            
+
             <div class="overflow-x-auto bg-gray-400">
                 <table class="table w-full table-zebra">
                 <thead>
@@ -123,8 +161,31 @@ $weekdays = [
                 <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
             </calendar-date>
         </div>
-        
-    </main>
+        <!-- Delete Account Section -->
+        <section class="flex flex-col items-center p-6 mt-10 text-center bg-red-100 rounded-lg shadow-md">
+            <h2 class="mb-4 text-xl font-bold text-red-800">Delete Account</h2>
+            <p class="mb-6 text-red-700">Warning: Deleting your account is a permanent action and cannot be undone. All your data, including appointments, will be permanently removed.</p>
+            <button class="btn btn-error" onclick="deleteModal.showModal()">
+                <i class="fa-solid fa-user-xmark"></i>
+                Delete Account
+            </button>
+        </section>
 
+    </main>
+    <!-- Modal for delete confirmation -->
+    <dialog id="deleteModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Confirm Account Deletion</h3>
+            <p class="py-4">Are you absolutely sure you want to delete your account? This action is irreversible.</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Cancel</button>
+                </form>
+                <a href="?delete_account=confirm" class="btn btn-error">
+                    Yes, Delete
+                </a>
+            </div>
+        </div>
+    </dialog>
 </body>
 </html>
