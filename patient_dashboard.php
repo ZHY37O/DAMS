@@ -24,34 +24,43 @@
                     </button>
                     
                 </div>
-                <form action="search.php" method="GET" class="flex items-center gap-2">
-                    <input type="text" name="query" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
-                    <button type="submit" class="btn btn-ghost btn-circle">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                
+                <!-- Search Form -->
+                <form action="/search.php" method="GET" class="flex gap-2">
+                    <input type="text" name="query" placeholder="Search doctors..." class="w-24 input input-bordered md:w-auto" />
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-search"></i>
                     </button>
                 </form>
+                
                 <div class="dropdown dropdown-end">
-                    <button tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
+                    <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700" onclick="location.href = '/logout.php';">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout
                     </button>
-                    <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a class="justify-between">
-                                Profile
-                                <span class="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
+                    
                 </div>
             </div>
         </div>
     </nav>
-    <main class="max-w-6xl p-4 mx-auto">
-        <section class="mt-10">
+
+    <main class="">
+        <header class="mb-8 rounded-lg bg-lime-500 h-[150px]">
+            <h1 class="text-3xl font-bold text-gray-800">Patient Dashboard </h1>
+            <p class="text-zinc-800">Welcome to your deshboard</p>
+        </header>
+
+        <div class="p-6">
+            <div class="border shadow-sm card bg-base-100">
+                <div class="p-4 card-body">
+                <h2 class="text-lg font-semibold card-title">Medicine History</h2>
+                <p class="text-gray-500">No medicine history found.</p> <!-- update from data base -->
+                </div>
+            </div>
+        </div>
+
+
+        <section class="m-10 shadow-2xl bg-slate-200">
             <h1 class="mb-10 text-2xl"> Previouse Appointments history</h1>
             
             <div class="overflow-x-auto bg-gray-400">
@@ -81,10 +90,9 @@
             <calendar-date class="border shadow-lg cally bg-base-100 border-base-300 rounded-box">
                 <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
                 <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
-            </calendar-date>
+                <calendar-month></calendar-month>
+            </calendar-date>       
         </div>
-        
     </main>
-
 </body>
 </html>

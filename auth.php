@@ -15,10 +15,10 @@ foreach ($r as $row) {
 
         switch ($type) {
             case 3:
-                header('Location: /admin_dashboard.html');
+                header('Location: /admin_dashboard.php'); // Changed from .html to .php
                 break;
             case 2:
-                header('Location: /doctor.php');
+                header('Location: /doctor_dashboard.php'); // CHANGED FROM doctor.php to doctor_dashboard.php
                 break;
             case 1:
                 header('Location: /patient_dashboard.php');

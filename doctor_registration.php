@@ -8,11 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="min-h-screen flex items-center justify-center bg-gray-200">
-    <div class="card w-full max-w-md shadow-2xl bg-orange-200 form-container items-center justify-center  flex p-10">
-        <h2 class="text-center text-3xl font-bold text-primary mb-2 ">Create Account</h2>
-        <form id="registrationForm" action = 'register.php' method = "POST">
-                <div class="form-control mb-4">
+<body class="flex items-center justify-center min-h-screen bg-gray-200">
+    <div class="flex items-center justify-center w-full max-w-md p-10 bg-orange-200 shadow-2xl card form-container">
+        <h2 class="mb-2 text-3xl font-bold text-center text-primary ">Create Account</h2>
+        <form id="registrationForm" method="POST" action='/register_doctor.php'>
+                <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Full Name</span>
                     </label>
@@ -25,14 +25,14 @@
                     />
                 </div>
                 
-                <div class="form-control mb-4">
+                <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Date of birth</span>
                     </label>
                     <input type="date" class="input" name="Date_Of_birth" />
                 </div>
                 
-                <div class="form-control mb-4">
+                <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Gender</span>
                     </label>
@@ -44,28 +44,51 @@
                     </select>
                 </div>
 
-
-                <div class="form-control mb-4">
+                <div class="mb-4 form-control">
                     <label class="label">
-                        <span class="label-text">Blood Group</span>
+                        <span class="label-text">specialist</span>
                     </label>
-                    <select class="select" name="blood_Group">
-                        <option disabled selected>Your blood group</option>
-                        <option>A+ ve</option>
-                        <option>A- ve</option>
-                        <option>B+ ve</option>
-                        <option>B- ve</option>
-                        <option>AB+ ve</option>
-                        <option>AB- ve</option>
-                        <option>O+ ve</option>
-                        <option>O- ve</option>
+                    <input 
+                        type="text"
+                        name="specialist" 
+                        placeholder="Enter your special field" 
+                        class="input input-bordered" 
+                        required 
+                    />
+                </div>
 
-                    </select>
+
+                <div class="mb-4 form-control">
+                    <label class="label">
+                        <span class="label-text">Year of experience</span>
+                    </label>
+                    <input 
+                        type="text"
+                        name="experience_year" 
+                        placeholder="Enter your experience's year " 
+                        class="input input-bordered" 
+                        required 
+                    />
+                </div>
+
+
+                <div class="mb-4 form-control">
+                    <label class="label">
+                        <span class="label-text">license Id</span>
+                    </label>
+                    <input 
+                        type="text"
+                        name="license_id" 
+                        placeholder="Enter your license Id " 
+                        class="input input-bordered" 
+                        required 
+                    />
                 </div>
 
 
 
-                <div class="form-control mb-4">
+
+                <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Your Address</span>
                     </label>
@@ -79,7 +102,7 @@
                 </div>
 
 
-                <div class="form-control mb-4">
+                <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Phone Number</span>
                     </Label>
@@ -113,7 +136,7 @@
                     <p class="validator-hint">Must be 11 digits</p>
                     </label>
                 </div>
-                <div class="form-control mb-4">
+                <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Create your username</span>
                     </label>
@@ -125,7 +148,7 @@
                         required 
                     />
                 </div>
-                <div class="form-control mb-4">
+                <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Your email</span>
                     </label>
@@ -144,13 +167,13 @@
                         </svg>
                         <input type="email" placeholder="mail@site.com" required name="email" />
                     </label>
-                    <div class="validator-hint hidden">Enter valid email address</div>
+                    <div class="hidden validator-hint">Enter valid email address</div>
 
                 </div>
                 
 
 
-                <div class="form-control mb-4">
+                <div class="mb-4 form-control">
                     <label class="label">
                         <span class="label-text">Create your Password</span>
                     </label>
@@ -179,13 +202,13 @@
                             title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
                         />
                     </label>
-                    <p class="validator-hint hidden">
+                    <p class="hidden validator-hint">
                         Must be more than 8 characters, including
                         <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
                     </p>
                 </div>
-                <div class="form-control mt-2">
-                    <button type="submit" class="btn btn-primary text-white text-lg">Create Account</button>
+                <div class="mt-2 form-control">
+                    <button type="submit" class="text-lg text-white btn btn-primary">Create Account</button>
                 </div>
 
         </form>

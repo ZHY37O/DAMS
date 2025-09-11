@@ -18,7 +18,7 @@
             <div class="flex gap-2">
                 <input type="text" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
                 <div class="dropdown dropdown-end">
-                    <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700" onclick="location.href = /logout.php/">
+                    <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700" onclick="location.href = '/logout.php';">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         Logout
                     </button>
@@ -99,13 +99,6 @@
                     <input type="time" class="w-32 input input-bordered" />
                     <input type="time" class="w-32 input input-bordered" />
 
-                    <!-- Max Appointments -->
-                    <input
-                        type="number"
-                        placeholder="Max Appointments"
-                        class="input input-bordered w-44"
-                    />
-
                     <!-- Add Button -->
                     <button class="btn btn-primary">Add</button>
                     </div>
@@ -132,7 +125,6 @@
                     <!-- Time Inputs -->
                     <input type="time" class="w-32 input input-bordered" />
                     <input type="time" class="w-32 input input-bordered" />
-
 
                     <!-- Add Button -->
                     <button class="btn btn-primary">Remove</button>
@@ -179,8 +171,5 @@
       
         </section>
     </main>
-
-
-
 </body>
 </html>

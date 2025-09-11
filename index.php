@@ -5,7 +5,7 @@ if (!($_SESSION['is_logged_in'] ?? 0)) {
     exit();
 } else {
     switch ($_SESSION['idtype']) {
-        case 0:
+        case 3:  // CHANGED FROM 0 TO 3 (to match auth.php)
             header('Location: /admin_dashboard.php/');
             exit();
         case 1:

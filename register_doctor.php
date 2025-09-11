@@ -11,25 +11,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email         = $_POST['email'] ?? null;
     $password_raw  = $_POST['password'] ?? null;
     $password_hashed = hash("sha256", $password_raw);
+    
+    $specialization    = $_POST['specialist'] ?? null;
+    $years_of_experience       = $_POST['experience_year'] ?? null;
+    $license_id    = $_POST['license_id'] ?? null;
 }
 
 $sql_insert_account = "INSERT INTO account 
                 (email,id_type,address,phone,gender,username,name,pswd_hash,DoB)
                 VALUES 
                 (:email,:id_type,:address,:phone,:gender,:username,:name,:pswd_hash,:DoB);";
-$sql_insert_patient = "INSERT INTO patient
-                (user_id,blood_type)
+$sql_insert_doctor = "INSERT INTO doctor
+                (user_id,date_joined,specialization,license_id,years_of_experience)
                 VALUES
-                (:user_id,:blood_type);";
+                (:user_id,:date_joined,:specialization,:license_id,:years_of_experience);";
 
 
 try {
     $stmt1 = $conn->prepare($sql_insert_account);
-    $stmt2 = $conn->prepare($sql_insert_patient);
+    $stmt2 = $conn->prepare($sql_insert_doctor);
     $conn->beginTransaction();
     $stmt1->execute([
         ':email'        => $email,
-        ':id_type' => 1,
+        ':id_type' => 2,  // CHANGED FROM 1 TO 2 (DOCTOR ID TYPE)
         ':address'      => $address,
         ':phone' => $phone_number,
         ':gender'       => $gender,
@@ -40,12 +44,15 @@ try {
     ]);
     $stmt2->execute([
         ':user_id' => $conn->lastInsertId(),
-        ':blood_type' => $blood_group
+        ':date_joined' => date('Y-m-d'),
+         ':specialization' => $specialization,
+         ':license_id' => $license_id,
+        ':years_of_experience' => $years_of_experience
     ]);
     $conn->commit();
     
     
-    echo "Registration successful!";
+    echo "Doctor registration successful!";
 } catch (PDOException $e) {
     if ($conn->inTransaction()) {
         $conn->rollBack();
