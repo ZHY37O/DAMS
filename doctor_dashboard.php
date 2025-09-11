@@ -16,7 +16,7 @@
                 <a class="text-xl btn btn-ghost">Doctor dashboard</a>
             </div>
             <div class="flex gap-2">
-                <input type="text" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
+                
                 <div class="dropdown dropdown-end">
                     <button class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-red-700" onclick="location.href = /logout.php/">
                         <i class="fa-solid fa-right-from-bracket"></i>
