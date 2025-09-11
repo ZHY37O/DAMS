@@ -1,3 +1,50 @@
+<?php
+session_start();
+require 'connect.php';
+try {
+    $sql = "select a.name, p.week, p.time from appointments p, account a where p.doctor_id = a.user_id and p.patient_id = :patient_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        ':patient_id' => $_SESSION['user_id']
+    ]);
+    $appointments = $stmt->fetchAll();
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+$weekdays = [
+    0 => "Sunday",
+    1 => "Monday",
+    2 => "Tuesday",
+    3 => "Wednesday",
+    4 => "Thursday",
+    5 => "Friday",
+    6 => "Saturday"
+];
+
+
+$edit = 0;
+if (isset($_SESSION['idtype']) and $_SESSION['idtype'] == 0) {
+    $edit = 1;
+}
+
+$weekdays = [
+    0 => "Sunday",
+    1 => "Monday",
+    2 => "Tuesday",
+    3 => "Wednesday",
+    4 => "Thursday",
+    5 => "Friday",
+    6 => "Saturday"
+];
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +65,6 @@
                 <a class="text-xl btn btn-ghost">Patient dashboard</a>
             </div>
             <div class="flex gap-2">
-                <div class="dropdown dropdown-end">
-     <button class="px-4 py-2 text-blue-800 rounded-lg bg-gray-50 hover:bg-slate-800" onclick="location.href = '/appointment_form.html/'">
-                        <p>Book Appointment</p>   <!-- can be change -->
-                    </button>
-                    
-                </div>
                 <form action="/search.php" method="GET" class="flex items-center gap-2">
                     <input type="text" name="query" placeholder="Search" class="w-24 input input-bordered md:w-auto" />
                     <button type="submit" class="btn btn-ghost btn-circle">
@@ -51,26 +92,26 @@
     </nav>
     <main class="max-w-6xl p-4 mx-auto">
         <section class="mt-10">
-            <h1 class="mb-10 text-2xl"> Previouse Appointments history</h1>
+            <h1 class="mb-10 text-2xl"> Appointments </h1>
             
             <div class="overflow-x-auto bg-gray-400">
                 <table class="table w-full table-zebra">
                 <thead>
                     <tr class="text-gray-700 bg-zinc-400">
-                        <th>ID</th>
-                        <th>Doctor</th>
-                        <th>Date</th>
+                        <th>Doctor Name</th>
+                        <th>Week</th>
                         <th>Time</th>
                     </tr>
                 </thead>
                 <tbody>
+<?php foreach ($appointments as $appointment): ?>
                     <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>2025-09-12</td>
-                    <td> 11:00:00</td>
+                    <td><?=$appointment['name']?></td>
+                    <td><?=$weekdays[$appointment['week']]?></td>
+                    <td><?=$appointment['time']?></td>
                     </td>
                     </tr>
+<?php endforeach; ?>
                 </tbody>
                 </table>
             </div>

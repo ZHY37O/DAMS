@@ -53,50 +53,7 @@ $weekdays = [
 
 <h1> <?= $doctor['name'] ?> </h1>
 
-<h2> Slots </h2>
-<table class="table w-full">
-    <thead>
-        <tr class="text-gray-700 bg-gray-100">
-            <th class="text-left">DAY</th>
-            <th class="text-left">TIME SLOTS</th>
-            <?php if (!$edit): ?>
-                <th class="text-left">BOOK APPOINTMENT</th>
-            <?php endif; ?>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($slots as $slot): ?>
-            <tr>
-                <td><?= htmlspecialchars($weekdays[$slot['week']]) ?></td>
-                <td><?= htmlspecialchars($slot['time']) ?></td>
-                <?php if (!$edit): ?>
-                    <td><button class='button' onclick="pbook(<?= $_SESSION['user_id'] ?>, <?= $doctor['user_id'] ?>, <?= $slot['week'] ?>, '<?= $slot['time'] ?>')"><i class='fa-solid fa-book hover:bg-red-200'></i></button></td>
-                <?php endif; ?>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-<p id="response"></p>
-<script>
-    function pbook(patient_id, doctor_id, week, time) {
-        let formData = new FormData()
-        let resp = document.querySelector("#response");
-        formData.append('patient_id', patient_id)
-        formData.append('doctor_id', doctor_id)
-        formData.append('week', week)
-        formData.append('time', time)
 
-        fetch("/book_appointment.php", {
-                method: "POST",
-                body: formData
-            }).then(res => res.text())
-            .then(data => {
-                resp.innerText = data;
-                alert("appointmet added")
-            })
-
-    }
-</script>
 
 
 <?php if ($edit): ?>
@@ -151,3 +108,51 @@ $weekdays = [
     </script>
 
 <?php endif; ?>
+
+     
+
+     
+<h1 class='text-green-300 text-4xl p-2'> Slots </h1>
+<table class="table w-full table-zebra">
+    <thead>
+        <tr class="text-gray-700 bg-green-200">
+            <th class="text-left">DAY</th>
+            <th class="text-left">TIME SLOTS</th>
+            <?php if (!$edit): ?>
+                <th class="text-left">BOOK APPOINTMENT</th>
+            <?php endif; ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($slots as $slot): ?>
+            <tr class = 'bg-green-100'>
+                <td><?= htmlspecialchars($weekdays[$slot['week']]) ?></td>
+                <td><?= htmlspecialchars($slot['time']) ?></td>
+                <?php if (!$edit): ?>
+                    <td><button class='button' onclick="pbook(<?= $_SESSION['user_id'] ?>, <?= $doctor['user_id'] ?>, <?= $slot['week'] ?>, '<?= $slot['time'] ?>')"><i class='fa-solid fa-book hover:bg-red-200'></i></button></td>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<p id="response"></p>
+<script>
+    function pbook(patient_id, doctor_id, week, time) {
+        let formData = new FormData()
+        let resp = document.querySelector("#response");
+        formData.append('patient_id', patient_id)
+        formData.append('doctor_id', doctor_id)
+        formData.append('week', week)
+        formData.append('time', time)
+
+        fetch("/book_appointment.php", {
+                method: "POST",
+                body: formData
+            }).then(res => res.text())
+            .then(data => {
+                resp.innerText = data;
+                alert("appointmet added")
+            })
+
+    }
+</script>
