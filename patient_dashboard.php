@@ -41,7 +41,7 @@ if (isset($_GET['delete_account']) && $_GET['delete_account'] == 'confirm') {
 }
 
 try {
-    $sql = "select a.name, p.week, p.time from appointments p, account a where p.doctor_id = a.user_id and p.patient_id = :patient_id";
+    $sql = "select a.name, p.appointment_id, p.week, p.time from appointments p, account a where p.doctor_id = a.user_id and p.patient_id = :patient_id";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
         ':patient_id' => $_SESSION['user_id']
@@ -147,6 +147,7 @@ $weekdays = [
                     <td><?=$appointment['name']?></td>
                     <td><?=$weekdays[$appointment['week']]?></td>
                     <td><?=$appointment['time']?></td>
+                    <td><button onclick="pdel(<?=$appointment['appointment_id']?>)" class='button'><i class = 'fa-solid fa-close text-red-500 hover:text-red-800'></i></button></td>
                     </td>
                     </tr>
 <?php endforeach; ?>
@@ -187,5 +188,22 @@ $weekdays = [
             </div>
         </div>
     </dialog>
+
+     <script>
+    function pdel(appointment_id) {
+        let formData = new FormData()
+        formData.append('appointment_id', appointment_id)
+        
+        fetch("/cancel_appointment.php", {
+                method: "POST",
+                body: formData
+                    }).then(()=>{
+                            location.reload()
+                        })
+
+    }
+</script>
+
+     
 </body>
 </html>
