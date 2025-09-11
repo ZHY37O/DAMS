@@ -25,31 +25,65 @@ if (isset($_SESSION['idtype']) and $_SESSION['idtype'] == 0) {
     $edit = 1;
 }
 
+  $weekdays = [
+    0 => "Sunday",
+    1 => "Monday",
+    2 => "Tuesday",
+    3 => "Wednesday",
+    4 => "Thursday",
+    5 => "Friday",
+    6 => "Saturday"
+];
+
 
 
 
 ?>
+
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="https://unpkg.com/cally"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+    
+    
 <h1> <?= $doctor['name'] ?> </h1>
     <p> TODO: fetch doctor info with id <?= $_SESSION['user_id'] ?> <br>
         develop ui.
     </p>
 
     <h4> Slots </h4>
-    <table class="table">
+    <table class="table w-full">
+     <thead>
+     <tr class="text-gray-700 bg-gray-100">
+                        <th class="text-left">DAY</th>
+                        <th class="text-left">TIME SLOTS</th>
+                        <th class="text-left">BOOK APPOINTMENT</th>
+     </tr>
+     </thead>
+     <tbody>
     <?php foreach ($slots as $slot): ?>
     <tr onclick='location.href = "/doctor.php/?query=<?=$doctor['username']?>"'>
-    <td><?= htmlspecialchars($slot['week']) ?></td>
+    <td><?= htmlspecialchars($weekdays[$slot['week']]) ?></td>
     <td><?= htmlspecialchars($slot['time']) ?></td>
+     <td><button class = 'button'><i class='fa-solid fa-book hover:bg-red-200'></i></button></td>
     </tr>    
     <?php endforeach; ?>
+     </tbody>
     </table>
 
     
 <?php if ($edit): ?>
     <form id = "form">
-<label for="weekday">Choose a Week:</label>
-      <input type="hidden" name="doctor_id" value=<?= $doctor['user_id'] ?>>
-<select id="weekday" name="weekday" class="select">
+    <input type="hidden" name="doctor_id" value=<?= $doctor['user_id'] ?>>
+      <div class='form-control'>
+      <label for="weekday">Choose a Week:</label>
+  <select id="weekday" name="weekday" class="select">
   <option value=0>Sunday</option>
   <option value=1>Monday</option>
   <option value=2>Tuesday</option>
@@ -58,10 +92,13 @@ if (isset($_SESSION['idtype']) and $_SESSION['idtype'] == 0) {
   <option value=5>Friday</option>
   <option value=6>Saturday</option>
 </select>
+     </div>
+     <div class = 'form-control'>
   <label for="time">Choose a time:</label>
   <input type="time" id="time" name="time" class="input">
+     </div>
     </form>
-  <button onclick='ppost()' class = "button" id = 'button'> add </button>
+  <button onclick='ppost()' class = "Button bg-green-700 hover:bg-red-700 rounded" id = 'button'> add </button>
 
 
 <p id="response"></p>
